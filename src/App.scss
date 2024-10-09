@@ -263,6 +263,8 @@ header {
     align-items: center;
     justify-content: center;
 
+    
+
     h2{
         color: #efeeba;
     }
@@ -275,7 +277,19 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        p{
+            color: white;
+            margin: 20px;
+            height: 250px;
+            overflow-y: scroll ;
+            
+
+        }
     }
+
+    
+
     &-close{
         position: absolute;
         top: 15px;
@@ -289,5 +303,36 @@ header {
             color: goldenrod;
         }
     }
+    button{
+        border:  none;
+        background-color: goldenrod;
+        padding: 12px 22px;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: all ease 0.5s;
+        margin-bottom: 30px;
 
+        &:hover{
+            background-color: #eaea68;
+        }
+
+    }
+    
+
+  }
+
+  .Popup-content-data{
+    margin-top: 20px;
+    height: 30vh;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    img{
+        height: 250%;
+        width: 100%;
+        
+    }
+   
   }

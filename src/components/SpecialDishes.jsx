@@ -1,21 +1,33 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Popup from './Popup'
+import { AllMenuContext } from './menu'
+
+
+
 
 function SpecialDishes(props) {
+  let allMenu=useContext(AllMenuContext)
+ 
 
   let [showPopup,setShowPopup]=useState(false)
+  let [currentDish,setCurrentDish]= useState('')
 
   let maxDishes=8
 
-  function showPopupHandler(){
+  function showPopupHandler(dishName){
+    
+   // console.log( "the dish is",dishName)
     setShowPopup(true)
+    setCurrentDish(dishName)
   }
   
-  let specialMeals=props.specialMenu.map((menuItem,index)=>{
+  let specialMeals=allMenu.map((menuItem,index)=>{
     if(index<maxDishes){
       return(
         <li>
-         <a  href='javaScript:;' onClick={showPopupHandler}>
+         <a  href='javaScript:;' onClick={()=>{
+             return showPopupHandler(menuItem)
+         }}>
            <img className='img2' src={menuItem.strMealThumb} alt="null" />
            <h6>{menuItem.strMeal}</h6>
          </a>
@@ -30,7 +42,7 @@ function SpecialDishes(props) {
   return (
     
     <section className='Special-Dishes'>
-      {showPopup && <Popup setShowPopup={setShowPopup}/>}
+      {showPopup && <Popup setShowPopup={setShowPopup} currentDish={currentDish}/>}
       
         <div className="container">
             <div className="special-Dishes-content text-align container1">

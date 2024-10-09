@@ -6,6 +6,11 @@ import SpecialDishes from './SpecialDishes'
 import FilteredDishes from './FilteredDishes'
 import Header from './header'
 
+//context globaly setting 
+ export const AllMenuContext = React.createContext()
+
+
+
 
 function Menus() {
 const [menu,setMenu]=useState([])  
@@ -44,8 +49,16 @@ useEffect(()=>{
     <div>
        <Header/>
        <Hero/>
-       {!loading ? <SpecialDishes specialMenu={menu}/> : <h2>Loading........</h2>}
-       {!loading ? <FilteredDishes filterDishesAre={FilterCatagory} AllMenu={menu} /> : null}
+       <AllMenuContext.Provider value={menu}>
+         {!loading ? <SpecialDishes  
+        //  specialMenu={menu}
+         /> : <h2>Loading........</h2>}
+         {!loading ? <FilteredDishes filterDishesAre={FilterCatagory} AllMenu={menu} /> : null}
+
+       </AllMenuContext.Provider>
+       
+
+       
        
     </div>
   )

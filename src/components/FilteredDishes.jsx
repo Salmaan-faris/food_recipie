@@ -6,7 +6,7 @@ function FilteredDishes(props) {
     let [filterMenus,setfilterMenus]=useState([])
     let [activeDish,setActiveDish]=useState()
 
-    console.log("All menus are", props.AllMenu)
+    //console.log("All menus are", props.AllMenu)
  
     //show on cllick
     function showResultHandler(allList){
