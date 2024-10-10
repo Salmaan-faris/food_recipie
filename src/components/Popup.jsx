@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Popup({setShowPopup,currentDish}) {
-  console.log("the current dish is",currentDish)
+function Popup({setShowPopup,currentDish,orderNowHandler}) {
+
  
      
     function closePopupHandle(){
@@ -20,7 +20,7 @@ function Popup({setShowPopup,currentDish}) {
         <h2 > 
             {currentDish.strMeal}       
         </h2>
-        <button>order now</button>
+        <button onClick={()=>{orderNowHandler(currentDish.strMealThumb,currentDish.strMeal)}}>order now</button>
         
         <h5 onClick={closePopupHandle} className='popup-close'> close</h5>
       </div>

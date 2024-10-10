@@ -7,9 +7,7 @@ import FilteredDishes from './FilteredDishes'
 import Header from './header'
 
 //context globaly setting 
- export const AllMenuContext = React.createContext()
-
-
+export const AllMenuContext=React.createContext()
 
 
 function Menus() {
@@ -49,7 +47,7 @@ useEffect(()=>{
     <div>
        <Header/>
        <Hero/>
-       <AllMenuContext.Provider value={menu}>
+       <AllMenuContext.Provider value={menu }>
          {!loading ? <SpecialDishes  
         //  specialMenu={menu}
          /> : <h2>Loading........</h2>}
@@ -57,13 +55,12 @@ useEffect(()=>{
 
        </AllMenuContext.Provider>
        
-
-       
-       
     </div>
   )
 
 }
 
 export default Menus
+
+
 
