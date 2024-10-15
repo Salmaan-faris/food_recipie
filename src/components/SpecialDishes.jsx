@@ -12,8 +12,8 @@ function SpecialDishes() {
 
   let [showPopup,setShowPopup]=useState(false)
   let [currentDish,setCurrentDish]= useState('')
-  let [orderImg,setOrderImg]=useState()
-  let [orderTitle,setOrderTitle]=useState()
+  let [addToCart,setAddToCart]=useState([])
+  
 
   let maxDishes=8
 
@@ -26,11 +26,20 @@ function SpecialDishes() {
 
   //order handler
   const orderNowHandler=(cartImg,carttitle)=>{
-    setOrderImg(cartImg)
-    setOrderTitle(carttitle)
-    
+    setAddToCart(
+      [
+        ...addToCart,
+        {
+      "cImg":cartImg,
+      "cTitle":carttitle
 
+    }]
+  ) 
+  
   }
+ 
+  
+ 
   
   let specialMeals=allMenu.map((menuItem,index)=>{
     
@@ -60,7 +69,7 @@ function SpecialDishes() {
       {showPopup && <Popup setShowPopup={setShowPopup} currentDish={currentDish} orderNowHandler={orderNowHandler}/>}
       
         <div className="container">
-          <Addtocart orderImg={orderImg} orderTitle={orderTitle} />
+          <Addtocart addToCarts={addToCart} />
             <div className="special-Dishes-content text-align container1">
                 <h2>our special Dishes are</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos ea id illo, quaerat corporis veniam officiis magni sint nemo perspiciatis impedit et est, dicta molestias?</p>
