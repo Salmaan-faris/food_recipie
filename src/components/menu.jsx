@@ -1,10 +1,11 @@
-
+import { BrowserRouter as Router,Route , Routes } from 'react-router-dom'
 import React from 'react'
 import { useState ,useEffect} from 'react'
 import Hero from './Hero'
 import SpecialDishes from './SpecialDishes'
 import FilteredDishes from './FilteredDishes'
 import Header from './header'
+import Checkout from './checkout'
 
 //context globaly setting 
 export const AllMenuContext=React.createContext()
@@ -45,16 +46,30 @@ useEffect(()=>{
 
   return (
     <div>
-       <Header/>
-       <Hero/>
-       <AllMenuContext.Provider value={menu }>
-         {!loading ? <SpecialDishes  
-        //  specialMenu={menu}
-         /> : <h2>Loading........</h2>}
-         {!loading ? <FilteredDishes filterDishesAre={FilterCatagory} AllMenu={menu} /> : null}
+       <Router>
+        
+          <Header/>
+          <Hero/>
+          
+         <Routes>
+            <Route path='/' element={
+              <>
+               <AllMenuContext.Provider value={menu }>
+               {!loading ? <SpecialDishes  
+               //  specialMenu={menu}
+                 /> : <h2>Loading........</h2>}
+               {!loading ? <FilteredDishes filterDishesAre={FilterCatagory} AllMenu={menu} /> : null}
 
-       </AllMenuContext.Provider>
+              </AllMenuContext.Provider>
+              </>
+            }/>                         
+            <Route path='/checkout' element={<Checkout/>}/>
+
+                              
        
+
+         </Routes>
+      </Router>
     </div>
   )
 
